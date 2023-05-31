@@ -14,6 +14,9 @@ public class Laser : MonoBehaviour
     public AudioClip spawnSound;
     [Tooltip("If the laser is a player Laser, Indicates the canyon numbers it will use")]
     public int canyons;
+    [Tooltip("If the laser is a player Laser, Indicates the amount of credits to buy this laser")]
+    public int weaponCost;
+
     // Start is called before the first frame update
     void Start()
     {

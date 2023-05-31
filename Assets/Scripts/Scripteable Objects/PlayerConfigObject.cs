@@ -15,7 +15,8 @@ public class PlayerConfigObject : ScriptableObject
     [Range(2, 100)]
     [Tooltip("Indicates the speed variation when the player uses the accelerate button")]
     public float maxAcceleration = 3;
-
+    [Tooltip("For Intermission screen. The cost of this configuration to buy")]
+    public int creditCost;
 
     
     

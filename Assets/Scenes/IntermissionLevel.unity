@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 10691884}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1392259644}
+        m_TargetAssemblyTypeName: UpgradeContainerComponent, Assembly-CSharp
+        m_MethodName: BuyArmor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &10691884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,7 +1368,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 810680824}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1392259644}
+        m_TargetAssemblyTypeName: UpgradeContainerComponent, Assembly-CSharp
+        m_MethodName: BuyLaser2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &810680824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1612,7 +1636,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 873194873}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1392259644}
+        m_TargetAssemblyTypeName: UpgradeContainerComponent, Assembly-CSharp
+        m_MethodName: BuyLaser1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &873194873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2913,6 +2949,7 @@ GameObject:
   - component: {fileID: 1392259641}
   - component: {fileID: 1392259643}
   - component: {fileID: 1392259642}
+  - component: {fileID: 1392259644}
   m_Layer: 5
   m_Name: UpgradesContainer
   m_TagString: Untagged
@@ -2984,6 +3021,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392259640}
   m_CullTransparentMesh: 1
+--- !u!114 &1392259644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392259640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86c28b774723ae46b60801a2ac50f49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armorLevelLabel: {fileID: 1250033103}
+  maxHPLabel: {fileID: 999344539}
+  armorCostLabel: {fileID: 2043815102}
+  playerCreditsLabel: {fileID: 927098498}
+  armorLevelSlider: {fileID: 1361879296}
+  buyArmorButton: {fileID: 10691883}
+  buyLaser1Button: {fileID: 873194872}
+  buyLaser2Button: {fileID: 810680823}
+  laser1CostLabel: {fileID: 954259823}
+  laser2CostLabel: {fileID: 502692513}
+  laser1: {fileID: 6446757713668915724, guid: 966f4fb866534764a9722c7e205c7f8b, type: 3}
+  laser2: {fileID: 6446757713668915724, guid: 0f71474a3ab005b43baef73df86bfe6e, type: 3}
+  armorCurrentLevel: 0
+  armorNextLevel: 1
 --- !u!1 &1411410033
 GameObject:
   m_ObjectHideFlags: 0

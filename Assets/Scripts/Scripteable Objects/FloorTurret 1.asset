@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: becae52fdc85541e88de5e91a8f4831e, type: 3}
+  m_Name: FloorTurret 1
+  m_EditorClassIdentifier: 
+  health: 10
+  score: 100
+  laserObject: {fileID: 6446757713668915724, guid: 919906b7147ac4e1bbed2e58a60d42ee,
+    type: 3}
+  turretDamage: 5
+  startDelay: 0
+  frecuency: 0.3
+  laserSpeed: 1
+  isLaserSpeedRandom: 0
+  isRandomDelay: 1
+  isRandomFrecuency: 0
+  isMovable: 0
+  movementLimit: 3
+  movementDirection: 0

@@ -51,6 +51,13 @@ public class PlayerControl : MonoBehaviour
         fireLaser = inputAsset.FindActionMap("Weapon").FindAction("Fire");
         nextWeapon = inputAsset.FindActionMap("Weapon").FindAction("ChangeNext");
         previousWeapon = inputAsset.FindActionMap("Weapon").FindAction("ChangePrev");
+
+
+        configObject = PersistentPlayerConfiguration.Instance.playerConfigurations[PersistentPlayerConfiguration.Instance.armorIndex];
+        playerLaserWeapons.Clear();
+        playerLaserWeapons.AddRange(PersistentPlayerConfiguration.Instance.playerWeapons);
+        score = PersistentPlayerConfiguration.Instance.playerCredits;
+
         //explosionParticle.gameObject.SetActive(false);
     }
 

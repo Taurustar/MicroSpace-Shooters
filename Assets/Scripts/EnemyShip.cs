@@ -38,7 +38,11 @@ public class EnemyShip : MonoBehaviour
     public IEnumerator StartShooting()
     {
         yield return new WaitForSeconds(firstShotDelay);
-        StartCoroutine(Shooting());
+        if(laserPoints != null && config.laserObject != null)
+        {
+            StartCoroutine(Shooting());
+        }
+        
 
     }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player", menuName = "ScriptableObjects/Create Player", order = 2)]
 public class PlayerConfigObject : ScriptableObject
 {
-    [Range(10,100)]
+    [Range(10,500)]
     [Tooltip("Starting health value")]
     public int startingHealth = 100;
     [Range(1, 50)]

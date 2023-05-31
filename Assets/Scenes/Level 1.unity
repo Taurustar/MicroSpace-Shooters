@@ -2125,6 +2125,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
+--- !u!1 &828026915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828026917}
+  - component: {fileID: 828026916}
+  m_Layer: 0
+  m_Name: PersistentPlayerConfigObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &828026916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828026915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c351fc8e4198246439809eff0b795668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armorIndex: 0
+  playerCredits: 0
+  playerWeapons:
+  - {fileID: 6446757713668915724, guid: 441819480f3945647931f06aecfde093, type: 3}
+  playerConfigurations:
+  - {fileID: 11400000, guid: 5173783da4963438eb9cef9c01d3ee1d, type: 2}
+  - {fileID: 11400000, guid: 2e91c7997cde41c41bc5ade0d108f502, type: 2}
+  - {fileID: 11400000, guid: 5069fddb5d7c6c94ea352a8e05bc6b4c, type: 2}
+  - {fileID: 11400000, guid: 4f821d1b1d5ab894b8fb5d95e41e7727, type: 2}
+  - {fileID: 11400000, guid: bbd008e55b4810b4c85c00c2526a53f6, type: 2}
+--- !u!4 &828026917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828026915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 70.41687, y: -3.1018543, z: 39.086643}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832143634
 GameObject:
   m_ObjectHideFlags: 0

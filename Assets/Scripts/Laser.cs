@@ -32,33 +32,49 @@ public class Laser : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    bool CheckForValidCollission(Collider other)
+    {
+        //Add as many conditions necessary
+        return other.GetComponent<ScoreObject>() || other.GetComponent<ShipFollowZone>() || other.GetComponent<Rotator>() || other.GetComponent<ActivateShips>() || other.GetComponent<ActivateTurrets>() || other.GetComponent<DeactivateShips>() || other.GetComponent<DeactivateTurrets>() || other.GetComponent<PlayerControl>() || other.GetComponent<ShootLaser>() || other.GetComponent<EnemyShip>() || other.tag == "Obstacle";
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerControl>() || other.GetComponent<ShootLaser>() || other.GetComponent<EnemyShip>() || other.tag == "Obstacle")
-        {
+        if (CheckForValidCollission(other))
+        {            
             if(!(playerLaser && other.GetComponent<PlayerControl>()))
             {
                 if (!damageDealed)
                 {
-                    damageDealed = true;
+                    
                     if (other.GetComponent<PlayerControl>() && !playerLaser)
                     {
+                        damageDealed = true;
                         other.GetComponent<PlayerControl>().setHealth(other.GetComponent<PlayerControl>().getHealth() - damage);
                         other.GetComponent<PlayerControl>().healthText.text = " Health: " + other.GetComponent<PlayerControl>().getHealth().ToString();
+                        Destroy(gameObject);
                     }
                     else if (other.GetComponent<ShootLaser>() && playerLaser)
                     {
+                        damageDealed = true;
                         other.GetComponent<ShootLaser>().health -= damage;
+                        Destroy(gameObject);
                     }
                     else if(other.GetComponent<EnemyShip>() && playerLaser)
                     {
+                        damageDealed = true;
                         other.GetComponent<EnemyShip>().hp -= damage;
+                        Destroy(gameObject);
                     }
-                    Destroy(gameObject);
+                    
                 }
             }
             
+        }
+        else
+        {
+            if (playerLaser) Debug.Log(other.gameObject.name);
+            Destroy(gameObject);
         }
         
     }

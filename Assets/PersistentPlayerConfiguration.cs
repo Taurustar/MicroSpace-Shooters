@@ -20,11 +20,15 @@ public class PersistentPlayerConfiguration : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    
+    public int currentPlayerLevel = 0;
+    public List<string> levelNames;
+
     public int armorIndex;
     public int playerCredits;
 
     public List<GameObject> playerWeapons;
     public List<PlayerConfigObject> playerConfigurations;
+
+   
 
 }

@@ -8,6 +8,7 @@ public class CanvasButtonsActions : MonoBehaviour
 
     //public InputActionAsset inputAsset;
     public InputAction restartAction;
+    public InputAction returnAction;
 
     private void OnEnable()
     {
@@ -25,17 +26,33 @@ public class CanvasButtonsActions : MonoBehaviour
     {
         if (restartAction.phase == InputActionPhase.Performed)
         {
-            Restart();
+            FinishLevel();
+        }
+        if (returnAction.phase == InputActionPhase.Performed)
+        {
+            Menu();
         }
     }
 
-    public void Restart()
+    public void StartLevel()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level", UnityEngine.SceneManagement.LoadSceneMode.Single);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(PersistentPlayerConfiguration.Instance.levelNames[PersistentPlayerConfiguration.Instance.currentPlayerLevel], UnityEngine.SceneManagement.LoadSceneMode.Single);
+    }
+
+    public void FinishLevel()
+    {
+        PersistentPlayerConfiguration.Instance.currentPlayerLevel++;
+
+        if(PersistentPlayerConfiguration.Instance.currentPlayerLevel >= PersistentPlayerConfiguration.Instance.levelNames.Count)
+        {
+            PersistentPlayerConfiguration.Instance.currentPlayerLevel = 0;
+        }
+        UnityEngine.SceneManagement.SceneManager.LoadScene("IntermissionLevel", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 
     public void Menu()
     {
+        PersistentPlayerConfiguration.Instance.currentPlayerLevel = 0;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 

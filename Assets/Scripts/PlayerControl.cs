@@ -34,7 +34,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject explosionParticle;
     public AudioSource fireWeaponSound, gameOverSound, endLevelSound;
     public InputActionAsset inputAsset;
-    public InputAction forwardMovement, horizontalMovement, accelerating, restartAction, fireLaser, nextWeapon, previousWeapon;
+    public InputAction forwardMovement, horizontalMovement, accelerating, restartAction, returnAction, fireLaser, nextWeapon, previousWeapon;
     public Rigidbody rb;
 
 
@@ -48,6 +48,7 @@ public class PlayerControl : MonoBehaviour
         horizontalMovement = inputAsset.FindActionMap("Movement").FindAction("Horizontal");
         accelerating = inputAsset.FindActionMap("Movement").FindAction("Accelerate");
         restartAction = inputAsset.FindActionMap("Movement").FindAction("RestartLevel");
+        returnAction = inputAsset.FindActionMap("Movement").FindAction("ReturnMenu");
         fireLaser = inputAsset.FindActionMap("Weapon").FindAction("Fire");
         nextWeapon = inputAsset.FindActionMap("Weapon").FindAction("ChangeNext");
         previousWeapon = inputAsset.FindActionMap("Weapon").FindAction("ChangePrev");
@@ -67,6 +68,7 @@ public class PlayerControl : MonoBehaviour
         horizontalMovement.Enable();
         accelerating.Enable();
         restartAction.Enable();
+        returnAction.Enable();
         fireLaser.Enable();
         nextWeapon.Enable();
         previousWeapon.Enable();
@@ -78,6 +80,7 @@ public class PlayerControl : MonoBehaviour
         horizontalMovement.Disable();
         accelerating.Disable();
         restartAction.Disable();
+        returnAction.Disable();
         fireLaser.Disable();
         nextWeapon.Disable();
         previousWeapon.Disable();
@@ -210,7 +213,7 @@ public class PlayerControl : MonoBehaviour
         do
         {
             health += amount;
-            if(health > 100) health = 100;
+            if(health > configObject.startingHealth) health = configObject.startingHealth;
             healthText.text = " Health: " + health.ToString();
             yield return new WaitForSeconds(1);
             secondsRegen++;
@@ -277,7 +280,8 @@ public class PlayerControl : MonoBehaviour
             colliding = true;
             destroyed = true;
             gameObject.GetComponent<Renderer>().enabled = false;
-            StartCoroutine(FinishCoroutine());
+            gameOverSound.Play();
+            //StartCoroutine(FinishCoroutine());
             loseMenu.enabled = true;
         }
         else
@@ -333,9 +337,45 @@ public class PlayerControl : MonoBehaviour
         {
             if (restartAction.phase == InputActionPhase.Performed)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Level", UnityEngine.SceneManagement.LoadSceneMode.Single);
+                FinishLevel();
+            }
+            if (returnAction.phase == InputActionPhase.Performed)
+            {
+                Menu();
             }
         }
+
+        if(destroyed)
+        {
+            if (restartAction.phase == InputActionPhase.Performed)
+            {
+                StartLevel();
+            }
+        }
+    }
+
+    public void StartLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(PersistentPlayerConfiguration.Instance.levelNames[PersistentPlayerConfiguration.Instance.currentPlayerLevel], UnityEngine.SceneManagement.LoadSceneMode.Single);
+    }
+
+    public void FinishLevel()
+    {
+        PersistentPlayerConfiguration.Instance.currentPlayerLevel++;
+
+        if (PersistentPlayerConfiguration.Instance.currentPlayerLevel >= PersistentPlayerConfiguration.Instance.levelNames.Count)
+        {
+            PersistentPlayerConfiguration.Instance.currentPlayerLevel = 0;
+        }
+
+        PersistentPlayerConfiguration.Instance.playerCredits = score;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("IntermissionLevel", UnityEngine.SceneManagement.LoadSceneMode.Single);
+    }
+
+    public void Menu()
+    {
+        PersistentPlayerConfiguration.Instance.currentPlayerLevel = 0;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 
     public IEnumerator TurnRight()

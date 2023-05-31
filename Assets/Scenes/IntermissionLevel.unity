@@ -1872,6 +1872,7 @@ GameObject:
   - component: {fileID: 948219794}
   - component: {fileID: 948219793}
   - component: {fileID: 948219792}
+  - component: {fileID: 948219795}
   m_Layer: 5
   m_Name: Button_NextMission
   m_TagString: Untagged
@@ -1942,7 +1943,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 948219793}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 948219795}
+        m_TargetAssemblyTypeName: CanvasButtonsActions, Assembly-CSharp
+        m_MethodName: StartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &948219793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1981,6 +1994,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948219790}
   m_CullTransparentMesh: 1
+--- !u!114 &948219795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948219790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c553245918c4ad6a134a4c43cc8052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartAction:
+    m_Name: Restart
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 49949a9b-4e24-4cd0-a559-7f1b935cd0f3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  returnAction:
+    m_Name: Return
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 86a0793d-72ce-431f-b6c3-d2e750061203
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &954259821
 GameObject:
   m_ObjectHideFlags: 0
@@ -3978,6 +4021,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c351fc8e4198246439809eff0b795668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPlayerLevel: 0
+  levelNames:
+  - Level
   armorIndex: 0
   playerCredits: 0
   playerWeapons:

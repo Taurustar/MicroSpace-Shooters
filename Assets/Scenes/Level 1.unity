@@ -562,6 +562,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  returnAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   fireLaser:
     m_Name: Fire Laser
     m_Type: 0
@@ -1147,6 +1156,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  returnAction:
     m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
@@ -2154,6 +2172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c351fc8e4198246439809eff0b795668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPlayerLevel: 0
+  levelNames:
+  - Level
   armorIndex: 0
   playerCredits: 0
   playerWeapons:
@@ -2698,6 +2719,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  returnAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &958010002
 GameObject:
   m_ObjectHideFlags: 0
@@ -3163,6 +3193,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  returnAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1001 &1249386166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3463,6 +3502,15 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Restart
       m_Flags: 0
+    m_Flags: 0
+  returnAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
     m_Flags: 0
 --- !u!1001 &1364737123
 PrefabInstance:

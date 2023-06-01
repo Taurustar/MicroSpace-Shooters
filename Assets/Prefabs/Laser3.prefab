@@ -146,9 +146,11 @@ MonoBehaviour:
   playerLaser: 0
   playerShootingDelay: 0.5
   damageDealed: 0
-  laserSpeed: 1.5
+  laserSpeed: 8
   lifeTime: 10
   spawnSound: {fileID: 8300000, guid: 9cc99277f231e4adbbd91ff1821f526b, type: 3}
+  canyons: 0
+  weaponCost: 0
 --- !u!33 &7345682967480117972
 MeshFilter:
   m_ObjectHideFlags: 0

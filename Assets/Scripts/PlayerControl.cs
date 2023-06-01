@@ -58,7 +58,7 @@ public class PlayerControl : MonoBehaviour
         playerLaserWeapons.Clear();
         playerLaserWeapons.AddRange(PersistentPlayerConfiguration.Instance.playerWeapons);
         score = PersistentPlayerConfiguration.Instance.playerCredits;
-
+        health = configObject.startingHealth;
         //explosionParticle.gameObject.SetActive(false);
     }
 
@@ -92,11 +92,11 @@ public class PlayerControl : MonoBehaviour
     {
         Time.timeScale = 1;
         colliding = false;
-        health = configObject.startingHealth;
         acceleration = configObject.normalAcceleration;
         fireWeaponSound.clip = playerLaserWeapons[currentWeapon].GetComponent<Laser>().spawnSound;
 
-
+        healthText.text = " Health: " + health.ToString();
+        scoreText.text = " Credits: " + score.ToString();
     }
 
     private void OnTriggerEnter(Collider other)

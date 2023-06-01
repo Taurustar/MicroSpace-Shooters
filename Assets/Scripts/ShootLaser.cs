@@ -59,6 +59,8 @@ public class ShootLaser : MonoBehaviour
             alive = false;
             GameObject explosion = Instantiate(explosionParticle, transform);
             explosion.transform.localScale *= 0.1f;
+            deathSound.spatialBlend = 0;
+            deathSound.volume = 0.5f;
             deathSound.Play();
             FindObjectOfType<PlayerControl>().score += scoreGiven;
             FindObjectOfType<PlayerControl>().scoreText.text = " Credits: " + FindObjectOfType<PlayerControl>().score.ToString();
@@ -66,9 +68,10 @@ public class ShootLaser : MonoBehaviour
             {
                 gameObject.GetComponent<Renderer>().enabled = false;
             }
-            else if(gameObject.GetComponentInChildren<Renderer>())
+            else if(gameObject.GetComponentsInChildren<Renderer>().Length > 0)
             {
-                gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                foreach(Renderer render in gameObject.GetComponentsInChildren<Renderer>())
+                    render.enabled = false;
             }
             foreach(Collider col in gameObject.GetComponents<Collider>())
             {

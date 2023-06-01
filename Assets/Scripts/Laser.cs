@@ -60,13 +60,15 @@ public class Laser : MonoBehaviour
                     else if (other.GetComponent<ShootLaser>() && playerLaser)
                     {
                         damageDealed = true;
-                        other.GetComponent<ShootLaser>().health -= damage;
+                        if(other.GetComponent<ShootLaser>().enabled)
+                            other.GetComponent<ShootLaser>().health -= damage;
                         Destroy(gameObject);
                     }
                     else if(other.GetComponent<EnemyShip>() && playerLaser)
                     {
                         damageDealed = true;
-                        other.GetComponent<EnemyShip>().hp -= damage;
+                        if (other.GetComponent<EnemyShip>().enabled)
+                            other.GetComponent<EnemyShip>().hp -= damage;
                         Destroy(gameObject);
                     }
                     

@@ -55,6 +55,8 @@ public class EnemyShip : MonoBehaviour
             alive = false;
             GameObject explosion = Instantiate(explosionParticle, transform);
             explosion.transform.localScale *= 0.1f;
+            deathSound.spatialBlend = 0;
+            deathSound.volume = 0.5f;
             deathSound.Play();
             FindObjectOfType<PlayerControl>().score += scoreGiven;
             FindObjectOfType<PlayerControl>().scoreText.text = " Credits: " + FindObjectOfType<PlayerControl>().score.ToString();

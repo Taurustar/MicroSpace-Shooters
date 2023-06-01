@@ -105,6 +105,32 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4519777678856723172}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &1218362249
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4519777678856752478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 91.76
+  m_Center: {x: 7.1054274e-15, y: -0.00012254715, z: 0.0000076293945}
+--- !u!114 &1218362248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4519777678856752478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d28b0e7372811a40bf1d60d499ac0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectedObject: {fileID: 0}
 --- !u!54 &1218362243
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -190,7 +216,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -258,29 +284,3 @@ MonoBehaviour:
   followZone: {fileID: 4519777678856752478}
   followVector: {x: 0, y: 0, z: 0}
   config: {fileID: 11400000, guid: c7cb5c6c99bf1334d9eeae2df2df271a, type: 2}
---- !u!135 &1218362249
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4519777678856752478}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 91.76
-  m_Center: {x: 7.1054274e-15, y: -0.00012254715, z: 0.0000076293945}
---- !u!114 &1218362248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4519777678856752478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d28b0e7372811a40bf1d60d499ac0eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectedObject: {fileID: 0}

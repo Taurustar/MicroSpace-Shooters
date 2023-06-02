@@ -12,6 +12,9 @@ public class HealthItem : MonoBehaviour
     private Vector3 initialPosition;
     private float timer = 0f;
 
+    public bool setTargetPosY;
+    public Transform target;
+
     private void Start()
     {
         initialPosition = transform.localPosition;
@@ -32,7 +35,17 @@ public class HealthItem : MonoBehaviour
 
         // Apply the scale animation based on the animation curve
         float scale = blobCurve.Evaluate(t);
-        transform.localPosition = new Vector3(initialPosition.x, initialPosition.y * scale, initialPosition.z);
+        if (!setTargetPosY)
+        {
+            transform.localPosition = new Vector3(initialPosition.x, initialPosition.y * scale, initialPosition.z);
+        }
+        else
+        {
+            if(target != null)
+            {
+                transform.localPosition = new Vector3(initialPosition.x, target.localPosition.y - 0.7f, initialPosition.z);
+            }
+        }
     }
 
 }

@@ -327,7 +327,7 @@ public class PlayerControl : MonoBehaviour
 
                 if( horizontalMovement.phase == InputActionPhase.Performed)
                 {
-                    rb.MovePosition(rb.position + (transform.right * horizontalMovement.ReadValue<float>() * acc * Time.deltaTime));
+                    rb.MovePosition(rb.position + (transform.right * (horizontalMovement.ReadValue<float>() / Mathf.Abs(horizontalMovement.ReadValue<float>())) * acc * Time.deltaTime));
                 }
 
             }

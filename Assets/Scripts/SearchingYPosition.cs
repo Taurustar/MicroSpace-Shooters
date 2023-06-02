@@ -11,7 +11,7 @@ public class SearchingYPosition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindWithTag("Player");
+        target = FindObjectOfType<PlayerControl>().gameObject;
         setPosition = this.gameObject.transform;
     }
 

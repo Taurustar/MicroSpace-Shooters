@@ -327,7 +327,12 @@ public class PlayerControl : MonoBehaviour
 
                 if( horizontalMovement.phase == InputActionPhase.Performed)
                 {
-                    rb.MovePosition(rb.position + (transform.right * (horizontalMovement.ReadValue<float>() / Mathf.Abs(horizontalMovement.ReadValue<float>())) * acc * Time.deltaTime));
+                    rb.MovePosition(rb.position + (transform.right * (horizontalMovement.ReadValue<float>() / Mathf.Abs(horizontalMovement.ReadValue<float>())) * (1.5f * acc) * Time.deltaTime));
+                }
+
+                if (returnAction.phase == InputActionPhase.Performed)
+                {
+                    Menu();
                 }
 
             }
@@ -339,10 +344,6 @@ public class PlayerControl : MonoBehaviour
             {
                 FinishLevel();
             }
-            if (returnAction.phase == InputActionPhase.Performed)
-            {
-                Menu();
-            }
         }
 
         if(destroyed)
@@ -351,6 +352,7 @@ public class PlayerControl : MonoBehaviour
             {
                 StartLevel();
             }
+
         }
     }
 

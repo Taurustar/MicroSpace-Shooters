@@ -16,6 +16,9 @@ public class EnemyShip : MonoBehaviour
     public AudioSource deathSound;
     public GameObject followZone;
     public Vector3 followVector;
+    public float panFactor;
+    Vector3 panPoint;
+    public float firstPanDelay;
     public EnemyShipConfig config;
 
     private void Awake()
@@ -27,12 +30,15 @@ public class EnemyShip : MonoBehaviour
         laserSpeed = config.isLaserSpeedRandom ? Random.Range(1, 5) : config.laserSpeed;
         frecuency = config.isRandomFrecuency ? Random.Range(0.2f, 0.8f) : config.frecuency;
         firstShotDelay = config.isRandomDelay ? Random.Range(0, 1) : config.startDelay;
+        panFactor = config.maxPanValue;
+        firstPanDelay = config.panDelayRandom ? Random.Range(0, config.panDelay) : config.panDelay;
     }
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         StartCoroutine(StartShooting());
+        StartCoroutine(StartPan());
     }
 
     public IEnumerator StartShooting()
@@ -43,6 +49,16 @@ public class EnemyShip : MonoBehaviour
             StartCoroutine(Shooting());
         }
         
+
+    }
+
+    public IEnumerator StartPan()
+    {
+        yield return new WaitForSeconds(firstPanDelay);
+        if(config.movementDirection == EnemyShipConfig.Direction.FOLLOWS_PAN || config.movementDirection == EnemyShipConfig.Direction.PAN)
+            StartCoroutine(PanCoroutine());
+        
+
 
     }
 
@@ -71,9 +87,10 @@ public class EnemyShip : MonoBehaviour
         }
         else if (alive)
         {
-            if(config.movementDirection == EnemyShipConfig.Direction.FOLLOWS && followZone)
+            if((config.movementDirection == EnemyShipConfig.Direction.FOLLOWS || config.movementDirection == EnemyShipConfig.Direction.FOLLOWS_PAN) && followZone)
             {
-                Vector3 projectedOffset = transform.forward;
+
+                Vector3 projectedOffset = config.movementDirection == EnemyShipConfig.Direction.FOLLOWS_PAN ? panPoint : transform.forward;
                 if (followZone.GetComponent<ShipFollowZone>().detectedObject != null)
                 {
                     projectedOffset = transform.forward + followVector;
@@ -82,10 +99,22 @@ public class EnemyShip : MonoBehaviour
             }
             else
             {
-                rb.MovePosition(rb.position + (transform.forward * speed * Time.deltaTime));
+                if(config.movementDirection == EnemyShipConfig.Direction.PAN)
+                    rb.MovePosition(rb.position + (panPoint * speed * Time.deltaTime));
+                else
+                    rb.MovePosition(rb.position + (transform.forward * speed * Time.deltaTime));
             }
             
         }
+    }
+
+    IEnumerator PanCoroutine()
+    {
+        panPoint = transform.forward + (transform.position - (transform.position + (Vector3.right * panFactor)));
+        yield return new WaitForSeconds(2);
+        panFactor *= -1;
+        StartCoroutine(PanCoroutine());
+        
     }
 
     public IEnumerator Shooting()

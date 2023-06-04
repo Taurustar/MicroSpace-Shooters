@@ -31,11 +31,21 @@ public class EnemyShipConfig : ScriptableObject
     public bool isRandomDelay;
     [Tooltip("Set's the Ship frencuency as Random ignoring the frecuency value set")]
     public bool isRandomFrecuency;
+    [Tooltip("Indicates the max lenght for Pan movement")]
+    public float maxPanValue;
+    [Range(0, 5)]
+    [Tooltip("Number of seconds before the first pan the Ship is activated")]
+    public float panDelay;
+    [Tooltip("Set's if the pan delay is random")]
+    public bool panDelayRandom;
+
 
     public enum Direction
     {
         FRONT,
-        FOLLOWS
+        FOLLOWS,
+        PAN,
+        FOLLOWS_PAN
     };
     [Tooltip("APPLIES ONLY IF \"IS MOVABLE\" IS ON. Sets the turret movement direction")]
     public Direction movementDirection;

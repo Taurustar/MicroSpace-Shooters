@@ -99,6 +99,9 @@ public class PlayerControl : MonoBehaviour
 
         healthText.text = " Health: " + health.ToString();
         scoreText.text = " Credits: " + score.ToString();
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -213,7 +216,10 @@ public class PlayerControl : MonoBehaviour
         winMenu.enabled = true;
         endLevelSound.Play();
         end = true;
-        yield return new WaitForSeconds(2);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        PersistentPlayerConfiguration.Instance.playerCredits = score;
+        yield return new WaitForSeconds(1);
         endInput = true;
 
     }
@@ -386,7 +392,7 @@ public class PlayerControl : MonoBehaviour
             PersistentPlayerConfiguration.Instance.currentPlayerLevel = 0;
         }
 
-        PersistentPlayerConfiguration.Instance.playerCredits = score;
+
         UnityEngine.SceneManagement.SceneManager.LoadScene("IntermissionLevel", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 

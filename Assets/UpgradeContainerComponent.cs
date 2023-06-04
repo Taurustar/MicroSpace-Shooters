@@ -59,7 +59,8 @@ public class UpgradeContainerComponent : MonoBehaviour
             laser2CostLabel.text = "Cost: $" + laser2.GetComponent<Laser>().weaponCost.ToString();
         }
 
-
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
 

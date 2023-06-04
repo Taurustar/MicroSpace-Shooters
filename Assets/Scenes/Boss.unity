@@ -819,6 +819,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloorTurret (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5459237075905110882, guid: f58eacb415623418f9a4c7f74f0e5115,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58eacb415623418f9a4c7f74f0e5115, type: 3}
 --- !u!114 &138882208 stripped
@@ -5140,6 +5145,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloorTurret (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5459237075905110882, guid: f58eacb415623418f9a4c7f74f0e5115,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58eacb415623418f9a4c7f74f0e5115, type: 3}
 --- !u!1 &1004825888
@@ -7396,6 +7406,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloorTurret (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5459237075905110882, guid: f58eacb415623418f9a4c7f74f0e5115,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58eacb415623418f9a4c7f74f0e5115, type: 3}
 --- !u!1 &1276052929
@@ -7772,6 +7787,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloorTurret
       objectReference: {fileID: 0}
+    - target: {fileID: 5459237075905110882, guid: f58eacb415623418f9a4c7f74f0e5115,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58eacb415623418f9a4c7f74f0e5115, type: 3}
 --- !u!1001 &1287597932
@@ -7867,6 +7887,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FloorTurret (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5459237075905110882, guid: f58eacb415623418f9a4c7f74f0e5115,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58eacb415623418f9a4c7f74f0e5115, type: 3}
@@ -9702,6 +9727,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FloorTurret (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5459237075905110882, guid: f58eacb415623418f9a4c7f74f0e5115,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58eacb415623418f9a4c7f74f0e5115, type: 3}
@@ -12553,7 +12583,7 @@ MonoBehaviour:
   shipBody:
   - {fileID: 2124368689}
   laserPoints: []
-  explosionParticle: {fileID: 1845955007268882, guid: 67a684e320da6e7439421a07e3fa265c,
+  explosionParticle: {fileID: 3123075737211501182, guid: a3f72d5f213bb7d458dfc2c4369e7acf,
     type: 3}
   deathSound: {fileID: 2124368690}
   followZone: {fileID: 0}

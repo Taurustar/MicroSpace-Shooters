@@ -17,6 +17,8 @@ public class Laser : MonoBehaviour
     [Tooltip("If the laser is a player Laser, Indicates the amount of credits to buy this laser")]
     public int weaponCost;
     Rigidbody rb;
+    public GameObject explosionLaser;
+    public float explosionScale = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,19 +62,24 @@ public class Laser : MonoBehaviour
                             other.GetComponent<PlayerControl>().setHealth(other.GetComponent<PlayerControl>().getHealth() - damage);
                             other.GetComponent<PlayerControl>().healthText.text = " Health: " + other.GetComponent<PlayerControl>().getHealth().ToString();
                         }
-                        
+                        GameObject explosion = Instantiate(explosionLaser, transform.position, Quaternion.identity);
+                        explosion.transform.localScale *= explosionScale;
                         Destroy(gameObject);
                     }
                     else if (other.GetComponent<ShootLaser>() && playerLaser)
                     {
                         damageDealed = true;
-                        if(other.GetComponent<ShootLaser>().enabled)
+                        GameObject explosion = Instantiate(explosionLaser, transform.position, Quaternion.identity);
+                        explosion.transform.localScale *= explosionScale;
+                        if (other.GetComponent<ShootLaser>().enabled)
                             other.GetComponent<ShootLaser>().health -= damage;
                         Destroy(gameObject);
                     }
                     else if(other.GetComponent<EnemyShip>() && playerLaser)
                     {
                         damageDealed = true;
+                        GameObject explosion = Instantiate(explosionLaser, transform.position, Quaternion.identity);
+                        explosion.transform.localScale *= explosionScale;
                         if (other.GetComponent<EnemyShip>().enabled)
                             other.GetComponent<EnemyShip>().hp -= damage;
                         Destroy(gameObject);
@@ -85,6 +92,8 @@ public class Laser : MonoBehaviour
         else
         {
             if (playerLaser) Debug.Log(other.gameObject.name);
+            GameObject explosion = Instantiate(explosionLaser, transform.position, Quaternion.identity);
+            explosion.transform.localScale *= explosionScale;
             Destroy(gameObject);
         }
         

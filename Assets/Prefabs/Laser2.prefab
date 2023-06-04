@@ -151,6 +151,9 @@ MonoBehaviour:
   spawnSound: {fileID: 8300000, guid: f095ed7fb8ed84caa814c14d6ea51fc0, type: 3}
   canyons: 0
   weaponCost: 0
+  explosionLaser: {fileID: 5585671604984661021, guid: b71a4a38ba7ccc14193f5a3e4f088e15,
+    type: 3}
+  explosionScale: 0.1
 --- !u!33 &7345682967480117972
 MeshFilter:
   m_ObjectHideFlags: 0

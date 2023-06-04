@@ -22,6 +22,7 @@ public class EnemyShip : MonoBehaviour
     public EnemyShipConfig config;
     public List<GameObject> particlePoints;
     public float particleScale = 0.1f;
+    public AudioClip bossMusic;
 
     private void Awake()
     {
@@ -41,6 +42,12 @@ public class EnemyShip : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         StartCoroutine(StartShooting());
         StartCoroutine(StartPan());
+        if(config.boss)
+        {
+            FindObjectOfType<PlayerControl>().music.Stop();
+            FindObjectOfType<PlayerControl>().music.clip = bossMusic;
+            FindObjectOfType<PlayerControl>().music.Play();
+        }
     }
 
     public IEnumerator StartShooting()

@@ -17,9 +17,9 @@ MonoBehaviour:
   laserObject: {fileID: 6446757713668915724, guid: 8f09eb15ce6a2534ab2bc1d8e81f85fe,
     type: 3}
   turretDamage: 15
-  startDelay: 0
-  frecuency: 0.3
-  laserSpeed: 4.318
+  startDelay: 1
+  frecuency: 0.705
+  laserSpeed: 5
   isLaserSpeedRandom: 0
   isRandomDelay: 1
   isRandomFrecuency: 1

@@ -16,7 +16,7 @@ public class LookForPlayer : MonoBehaviour
     void Update()
     {
         Vector3 targetPostition = new Vector3(FindObjectOfType<PlayerControl>().transform.position.x,
-                                       canyon.transform.position.y,
+                                       FindObjectOfType<PlayerControl>().transform.position.y,
                                        FindObjectOfType<PlayerControl>().transform.position.z);
 
         canyon.transform.LookAt(targetPostition);

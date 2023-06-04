@@ -20,13 +20,15 @@ public class EnemyShip : MonoBehaviour
     Vector3 panPoint;
     public float firstPanDelay;
     public EnemyShipConfig config;
+    public List<GameObject> particlePoints;
+    public float particleScale = 0.1f;
 
     private void Awake()
     {
         hp = config.health;
         alive = true;
         scoreGiven = config.score;
-        speed = config.speed;
+        speed = config.isRandomSpeed ? Random.Range(1, config.speed) : config.speed;
         laserSpeed = config.isLaserSpeedRandom ? Random.Range(1, 5) : config.laserSpeed;
         frecuency = config.isRandomFrecuency ? Random.Range(0.2f, 0.8f) : config.frecuency;
         firstShotDelay = config.isRandomDelay ? Random.Range(0, 1) : config.startDelay;
@@ -63,6 +65,16 @@ public class EnemyShip : MonoBehaviour
     }
 
 
+    IEnumerator ExplosionSequence()
+    {
+        foreach (GameObject particle in particlePoints)
+        {
+            GameObject expl2 = Instantiate(explosionParticle, particle.transform);
+            deathSound.Play();
+            yield return new WaitForSeconds(0.33f);
+        }
+    }
+
     Rigidbody rb;
     private void Update()
     {
@@ -70,12 +82,19 @@ public class EnemyShip : MonoBehaviour
         {
             alive = false;
             GameObject explosion = Instantiate(explosionParticle, transform);
-            explosion.transform.localScale *= 0.1f;
+            explosion.transform.localScale *= particleScale;
+            explosion.transform.SetParent(null);
             deathSound.spatialBlend = 0;
             deathSound.volume = 0.5f;
             deathSound.Play();
             FindObjectOfType<PlayerControl>().score += scoreGiven;
             FindObjectOfType<PlayerControl>().scoreText.text = " Credits: " + FindObjectOfType<PlayerControl>().score.ToString();
+
+            if(config.boss)
+            {
+                StartCoroutine(ExplosionSequence());
+                FindObjectOfType<PlayerControl>().StartCoroutine(FindObjectOfType<PlayerControl>().PlayEndOfLevel());
+            }
             foreach (Collider col in gameObject.GetComponents<Collider>())
             {
                 Destroy(col);

@@ -8,6 +8,7 @@ TagManager:
   - End Level
   - Obstacle
   - FollowZone
+  - BossBlock
   layers:
   - Default
   - TransparentFX

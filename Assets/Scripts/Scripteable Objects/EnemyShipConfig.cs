@@ -29,6 +29,8 @@ public class EnemyShipConfig : ScriptableObject
     public bool isLaserSpeedRandom;
     [Tooltip("Set's the Start Delay as Random ignoring the Start Delay value set")]
     public bool isRandomDelay;
+    [Tooltip("Set's the ship's speed as random ignoring the speed value set")]
+    public bool isRandomSpeed;
     [Tooltip("Set's the Ship frencuency as Random ignoring the frecuency value set")]
     public bool isRandomFrecuency;
     [Tooltip("Indicates the max lenght for Pan movement")]
@@ -38,7 +40,8 @@ public class EnemyShipConfig : ScriptableObject
     public float panDelay;
     [Tooltip("Set's if the pan delay is random")]
     public bool panDelayRandom;
-
+    [Tooltip("Set's if this ship is a boss (So after destruction it should end the level)")]
+    public bool boss;
 
     public enum Direction
     {

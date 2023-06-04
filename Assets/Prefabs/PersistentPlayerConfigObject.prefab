@@ -47,6 +47,7 @@ MonoBehaviour:
   levelNames:
   - Level
   - Level02
+  - Boss
   armorIndex: 0
   playerCredits: 0
   playerWeapons:

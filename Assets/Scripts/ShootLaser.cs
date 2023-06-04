@@ -22,6 +22,7 @@ public class ShootLaser : MonoBehaviour
     float firstShotDelay;
     public AudioSource deathSound;
     public GameObject explosionParticle;
+    public float explosionScale = 0.1f;
     // Start is called before the first frame update
 
     private void Awake()
@@ -58,7 +59,8 @@ public class ShootLaser : MonoBehaviour
         {
             alive = false;
             GameObject explosion = Instantiate(explosionParticle, transform);
-            explosion.transform.localScale *= 0.1f;
+            explosion.transform.localScale *= explosionScale;
+            explosion.transform.SetParent(null);
             deathSound.spatialBlend = 0;
             deathSound.volume = 0.5f;
             deathSound.Play();
@@ -68,19 +70,36 @@ public class ShootLaser : MonoBehaviour
             {
                 gameObject.GetComponent<Renderer>().enabled = false;
             }
-            else if(gameObject.GetComponentsInChildren<Renderer>().Length > 0)
-            {
-                foreach(Renderer render in gameObject.GetComponentsInChildren<Renderer>())
-                    render.enabled = false;
-            }
+
+                DisableRendererRecursively(transform);
+            
             foreach(Collider col in gameObject.GetComponents<Collider>())
             {
                 Destroy(col);
-            }
+            }            
             Destroy(gameObject.GetComponent<TurretMovable>());
             
         }
     }
+
+
+    private void DisableRendererRecursively(Transform parent)
+    {
+        // Disable Renderer component if exists
+        Renderer renderer = parent.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = false;
+        }
+
+        // Disable Renderer component in all children and subchildren
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform child = parent.GetChild(i);
+            DisableRendererRecursively(child);
+        }
+    }
+
 
     public IEnumerator Shooting()
     {

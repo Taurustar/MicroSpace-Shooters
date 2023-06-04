@@ -9,20 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: becae52fdc85541e88de5e91a8f4831e, type: 3}
-  m_Name: AimingTurretLevel2
+  m_Script: {fileID: 11500000, guid: bbbde4a1f612cfe4a912a910eeb2d105, type: 3}
+  m_Name: Follow-FighterPan 1
   m_EditorClassIdentifier: 
-  health: 30
-  score: 500
-  laserObject: {fileID: 6446757713668915724, guid: 83d069eef71ac8f498dc42d5c19dbeae,
+  health: 5
+  score: 50
+  speed: 3
+  laserObject: {fileID: 6446757713668915724, guid: 81113f25de7d1694493213247912325b,
     type: 3}
-  turretDamage: 13
+  laserDamage: 5
   startDelay: 0
-  frecuency: 0.3
-  laserSpeed: 3.45
+  frecuency: 0.509
+  laserSpeed: 1.861
   isLaserSpeedRandom: 0
   isRandomDelay: 1
+  isRandomSpeed: 1
   isRandomFrecuency: 1
-  isMovable: 0
-  movementLimit: 3
-  movementDirection: 0
+  maxPanValue: 5
+  panDelay: 2.41
+  panDelayRandom: 1
+  movementDirection: 3

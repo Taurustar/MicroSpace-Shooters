@@ -142,12 +142,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1568cdeb4dea4d3aaf559d2830dc3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 12
   playerLaser: 1
   playerShootingDelay: 0.5
   damageDealed: 0
   laserSpeed: 8
-  lifeTime: 10
+  lifeTime: 7
   spawnSound: {fileID: 8300000, guid: f095ed7fb8ed84caa814c14d6ea51fc0, type: 3}
   canyons: 1
   weaponCost: 1500

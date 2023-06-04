@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: becae52fdc85541e88de5e91a8f4831e, type: 3}
-  m_Name: AimingTurretLevel2
+  m_Name: WallTurretFast
   m_EditorClassIdentifier: 
-  health: 30
-  score: 500
-  laserObject: {fileID: 6446757713668915724, guid: 83d069eef71ac8f498dc42d5c19dbeae,
+  health: 10
+  score: 100
+  laserObject: {fileID: 6446757713668915724, guid: 81113f25de7d1694493213247912325b,
     type: 3}
-  turretDamage: 13
+  turretDamage: 10
   startDelay: 0
-  frecuency: 0.3
-  laserSpeed: 3.45
-  isLaserSpeedRandom: 0
+  frecuency: 0.8
+  laserSpeed: 1
+  isLaserSpeedRandom: 1
   isRandomDelay: 1
-  isRandomFrecuency: 1
+  isRandomFrecuency: 0
   isMovable: 0
   movementLimit: 3
   movementDirection: 0

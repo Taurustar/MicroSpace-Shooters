@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: becae52fdc85541e88de5e91a8f4831e, type: 3}
-  m_Name: AimingTurretLevel2
+  m_Name: AimingBoss
   m_EditorClassIdentifier: 
   health: 30
   score: 500
-  laserObject: {fileID: 6446757713668915724, guid: 83d069eef71ac8f498dc42d5c19dbeae,
+  laserObject: {fileID: 6446757713668915724, guid: 8f09eb15ce6a2534ab2bc1d8e81f85fe,
     type: 3}
-  turretDamage: 13
+  turretDamage: 15
   startDelay: 0
   frecuency: 0.3
-  laserSpeed: 3.45
+  laserSpeed: 4.318
   isLaserSpeedRandom: 0
   isRandomDelay: 1
   isRandomFrecuency: 1

@@ -28,7 +28,7 @@ public class PlayerControl : MonoBehaviour
     public Canvas winMenu;
     [Tooltip("The Canvas when the player loses all its health")]
     public Canvas loseMenu;
-    public bool end;
+    public bool end, endInput;
     public bool destroyed;
     public ParticleSystem fire;
     public GameObject explosionParticle;
@@ -92,6 +92,8 @@ public class PlayerControl : MonoBehaviour
     {
         Time.timeScale = 1;
         colliding = false;
+        end = false;
+        endInput = false;
         acceleration = configObject.normalAcceleration;
         fireWeaponSound.clip = playerLaserWeapons[currentWeapon].GetComponent<Laser>().spawnSound;
 
@@ -158,15 +160,16 @@ public class PlayerControl : MonoBehaviour
 
             if (other.GetComponent<ShootLaser>())
             {
+                health -= other.GetComponent<ShootLaser>().health;
                 other.GetComponent<ShootLaser>().health = 0;
-                health -= 25;
                 healthText.text = " Health: " + health.ToString();
             }
 
             if (other.GetComponent<EnemyShip>())
             {
+
+                health -= other.GetComponent<EnemyShip>().hp;
                 other.GetComponent<EnemyShip>().hp = 0;
-                health -= 25;
                 healthText.text = " Health: " + health.ToString();
             }
 
@@ -191,12 +194,7 @@ public class PlayerControl : MonoBehaviour
 
             if (other.tag == "End Level")
             {
-                music.Stop();
-                //Time.timeScale = 0;
-                end = true;
-                acceleration = 0;
-                winMenu.enabled = true;
-                endLevelSound.Play();
+                StartCoroutine(PlayEndOfLevel());
             }
 
             colliding = false;
@@ -204,6 +202,19 @@ public class PlayerControl : MonoBehaviour
 
 
         
+
+    }
+
+    public IEnumerator PlayEndOfLevel()
+    {
+        music.Stop();
+        //Time.timeScale = 0;        
+        acceleration = 0;
+        winMenu.enabled = true;
+        endLevelSound.Play();
+        end = true;
+        yield return new WaitForSeconds(2);
+        endInput = true;
 
     }
 
@@ -338,12 +349,13 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        if(end)
+        if(end && endInput)
         {
             if (restartAction.phase == InputActionPhase.Performed)
             {
                 FinishLevel();
             }
+
         }
 
         if(destroyed)
@@ -351,6 +363,10 @@ public class PlayerControl : MonoBehaviour
             if (restartAction.phase == InputActionPhase.Performed)
             {
                 StartLevel();
+            }
+            if (returnAction.phase == InputActionPhase.Performed)
+            {
+                Menu();
             }
 
         }

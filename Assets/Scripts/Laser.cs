@@ -42,7 +42,7 @@ public class Laser : MonoBehaviour
     bool CheckForValidCollission(Collider other)
     {
         //Add as many conditions necessary
-        return other.GetComponent<Laser>() || other.GetComponent<ScoreObject>() || other.GetComponent<ShipFollowZone>() || other.GetComponent<Rotator>() || other.GetComponent<ActivateShips>() || other.GetComponent<ActivateTurrets>() || other.GetComponent<DeactivateShips>() || other.GetComponent<DeactivateTurrets>() || other.GetComponent<PlayerControl>() || other.GetComponent<ShootLaser>() || other.GetComponent<EnemyShip>() || other.tag == "Obstacle" || other.tag == "BossBlock";
+        return other.GetComponent<Laser>() || other.GetComponent<HealthItem>() || other.GetComponent<ScoreObject>() || other.GetComponent<ShipFollowZone>() || other.GetComponent<Rotator>() || other.GetComponent<ActivateShips>() || other.GetComponent<ActivateTurrets>() || other.GetComponent<DeactivateShips>() || other.GetComponent<DeactivateTurrets>() || other.GetComponent<PlayerControl>() || other.GetComponent<ShootLaser>() || other.GetComponent<EnemyShip>() || other.tag == "Obstacle" || other.tag == "BossBlock";
     }
 
     private void OnTriggerEnter(Collider other)
@@ -57,7 +57,7 @@ public class Laser : MonoBehaviour
                     if (other.GetComponent<PlayerControl>() && !playerLaser)
                     {
                         damageDealed = true;
-                        if(!FindObjectOfType<PlayerControl>().end)
+                        if (!FindObjectOfType<PlayerControl>().end && !FindObjectOfType<PlayerControl>().destroyed)
                         {
                             other.GetComponent<PlayerControl>().setHealth(other.GetComponent<PlayerControl>().getHealth() - damage);
                             other.GetComponent<PlayerControl>().healthText.text = " Health: " + other.GetComponent<PlayerControl>().getHealth().ToString();

@@ -52,6 +52,8 @@ public class CanvasButtonsActions : MonoBehaviour
 
     public void Menu()
     {
+        if (FindObjectOfType<PersistentPlayerConfiguration>())
+            Destroy(FindObjectOfType<PersistentPlayerConfiguration>().gameObject);
         PersistentPlayerConfiguration.Instance.currentPlayerLevel = 0;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }

@@ -241,7 +241,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacle")
         {
-            health -= 100;
+            health = 0;
             healthText.text = " Health: " + health.ToString();
         }
     }
@@ -398,6 +398,8 @@ public class PlayerControl : MonoBehaviour
 
     public void Menu()
     {
+        if (FindObjectOfType<PersistentPlayerConfiguration>())
+            Destroy(FindObjectOfType<PersistentPlayerConfiguration>().gameObject);
         PersistentPlayerConfiguration.Instance.currentPlayerLevel = 0;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }

@@ -147,7 +147,7 @@ MonoBehaviour:
   playerShootingDelay: 0.6
   damageDealed: 0
   laserSpeed: 7
-  lifeTime: 5
+  lifeTime: 4
   spawnSound: {fileID: 8300000, guid: 9cc99277f231e4adbbd91ff1821f526b, type: 3}
   canyons: 3
   weaponCost: 4000

@@ -144,6 +144,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 6
   playerLaser: 1
+  laserName: Triple Laser
+  playerLaserUIImage: {fileID: 21300000, guid: 3e916d7e5daa4423d96fc4a9ee560cb5, type: 3}
   playerShootingDelay: 0.6
   damageDealed: 0
   laserSpeed: 7

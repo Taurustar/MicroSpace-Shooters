@@ -7,6 +7,8 @@ public class Laser : MonoBehaviour
 
     public int damage;
     public bool playerLaser;
+    public string laserName;
+    public Sprite playerLaserUIImage;
     public float playerShootingDelay = 0.5f;
     public bool damageDealed;
     public float laserSpeed = 1;

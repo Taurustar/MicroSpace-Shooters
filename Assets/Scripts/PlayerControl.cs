@@ -23,6 +23,8 @@ public class PlayerControl : MonoBehaviour
     public Text scoreText;
     float acceleration = 1.75f;
     public bool accelerate;
+    public Image weaponImage;
+    public Text weaponLabel;
     bool colliding;
     [Tooltip("The Canvas when the player reaches the end of the level")]
     public Canvas winMenu;
@@ -37,7 +39,7 @@ public class PlayerControl : MonoBehaviour
     public InputAction forwardMovement, horizontalMovement, accelerating, restartAction, returnAction, fireLaser, nextWeapon, previousWeapon;
     public Rigidbody rb;
 
-
+    bool changingWeapon = false;
     public AudioSource music;
 
 
@@ -102,6 +104,10 @@ public class PlayerControl : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        currentWeapon = 0;
+        weaponImage.sprite = playerLaserWeapons[currentWeapon].GetComponent<Laser>().playerLaserUIImage;
+        weaponLabel.text = playerLaserWeapons[currentWeapon].GetComponent<Laser>().laserName;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -284,6 +290,23 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes the weapon
+    /// </summary>
+    /// <param name="mode">Use 1 to Progress through the weapon list. Use -1 to go backwards through the weapon list</param>
+    /// <returns></returns>
+    IEnumerator ChangingWeaponCoroutine(int mode)
+    {
+        currentWeapon += mode;
+        if (currentWeapon >= playerLaserWeapons.Count - 1) currentWeapon = 0;
+        if (currentWeapon < 0) currentWeapon = playerLaserWeapons.Count - 1;
+
+        weaponImage.sprite = playerLaserWeapons[currentWeapon].GetComponent<Laser>().playerLaserUIImage;
+        weaponLabel.text = playerLaserWeapons[currentWeapon].GetComponent<Laser>().laserName;
+        yield return new WaitForSeconds(1);
+        changingWeapon = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -311,16 +334,16 @@ public class PlayerControl : MonoBehaviour
                     StartCoroutine(FiringLasers());
                 }
 
-                if (nextWeapon.phase == InputActionPhase.Performed)
+                if (nextWeapon.phase == InputActionPhase.Performed && !changingWeapon)
                 {
-                    currentWeapon++;
-                    if (currentWeapon >= playerLaserWeapons.Count - 1) currentWeapon = 0;
+                    changingWeapon = true;
+                    StartCoroutine(ChangingWeaponCoroutine(1));
                 }
 
-                if (previousWeapon.phase == InputActionPhase.Performed)
+                if (previousWeapon.phase == InputActionPhase.Performed && !changingWeapon)
                 {
-                    currentWeapon--;
-                    if (currentWeapon <= 0) currentWeapon = playerLaserWeapons.Count - 1;
+                    changingWeapon = true;
+                    StartCoroutine(ChangingWeaponCoroutine(-1));
                 }
 
                 float acc;

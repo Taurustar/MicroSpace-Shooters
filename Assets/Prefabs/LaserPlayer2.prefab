@@ -144,6 +144,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 12
   playerLaser: 1
+  laserName: Central Laser
+  playerLaserUIImage: {fileID: 21300000, guid: 91cd2e377d2ec4f86b0bbb0b146a35a3, type: 3}
   playerShootingDelay: 0.5
   damageDealed: 0
   laserSpeed: 8

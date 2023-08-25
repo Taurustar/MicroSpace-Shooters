@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class ErgosTrigger : MonoBehaviour
 {
@@ -8,11 +9,11 @@ public class ErgosTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("erdos"))
+        if(other.gameObject.CompareTag("erdos"))
         {
-            cinema.SequenceActivate();
-            Debug.Log("Trigger Disparado");
-            Destroy(gameObject);
+            Debug.Log("Activando Trigger");
+            //cinema.SequenceActivate();
+            cinema.camera.GetComponent<PlayableDirector>().Play();
         }
     }
 }

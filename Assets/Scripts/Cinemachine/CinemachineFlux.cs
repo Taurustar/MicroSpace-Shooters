@@ -1,34 +1,39 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.Timeline;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class CinemachineFlux : MonoBehaviour
 {
-    public GameObject cam01;
-    public GameObject cam02;
-    public GameObject cam03;
-    public GameObject cam04;
-    public GameObject cam05;
+    private GameObject cam01;
+    private GameObject cam02;
+    private GameObject cam03;
+    private GameObject cam04;
+    private GameObject cam05;
+
+    public GameObject camera;
+    public GameObject canvas;
 
     // Start is called before the first frame update
     void Start()
     {
-        cam01.SetActive(true);
-        cam02.SetActive(false);
-        cam03.SetActive(false);
-        cam04.SetActive(false);
-        cam05.SetActive(false);
+        camera = gameObject;
+        camera.GetComponent<PlayableDirector>().playOnAwake = false;
+    }
 
+    private void Update()
+    {
         
     }
 
     public void SequenceActivate()
     {
-        if(gameObject.name == "erdos")
-        {
-            StartCoroutine(DeactivateCam01());
-        }
+        StartCoroutine(DeactivateCam01());
     }
 
     IEnumerator DeactivateCam01()

@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - FollowZone
   - BossBlock
+  - erdos
   layers:
   - Default
   - TransparentFX

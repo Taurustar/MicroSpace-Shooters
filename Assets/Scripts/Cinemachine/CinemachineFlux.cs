@@ -17,18 +17,13 @@ public class CinemachineFlux : MonoBehaviour
     private GameObject cam05;
 
     public GameObject camera;
-    public GameObject canvas;
+    private GameObject canvas;
 
     // Start is called before the first frame update
     void Start()
     {
         camera = gameObject;
         camera.GetComponent<PlayableDirector>().playOnAwake = false;
-    }
-
-    private void Update()
-    {
-        
     }
 
     public void SequenceActivate()
